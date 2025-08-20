@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <!-- 自定义样式 -->
+  <style>
+    /* 调整侧边栏所有链接大小 */
+    .sidebar ul li a {
+      font-size: 18px;   /* 默认大约 14px */
+    }
+
+    /* 如果只想改一级目录（首页、目录） */
+    .sidebar > ul > li > a {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">加载中。。。。</div>
+  <script>
+    window.$docsify = {
+      name: '',
+      repo: '',
+      onlyCover: false,
+      coverpage: true,
+      loadSidebar: true,
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
+</html>
