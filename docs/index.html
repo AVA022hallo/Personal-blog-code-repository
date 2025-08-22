@@ -1,39 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>鲁昊霖个人站</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="鲁昊霖个人站">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Docsify 默认主题 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <!-- Google 字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- 自定义样式 -->
   <style>
-    /* 调整侧边栏所有链接大小 */
-    .sidebar ul li a {
-      font-size: 18px;   /* 默认大约 14px */
+    body {
+      background-color: #ffffff;
+      font-family: "SimSun", "宋体", serif;
     }
 
-    /* 如果只想改一级目录（首页、目录） */
+    /* 调整侧边栏链接大小 */
+    .sidebar ul li a {
+      font-size: 17px;
+    }
     .sidebar > ul > li > a {
       font-size: 20px;
       font-weight: bold;
+    }
+
+    /* 侧边栏相对定位，给底部图标留空间 */
+    .sidebar {
+      position: relative;
+      padding-bottom: 80px;
+    }
+
+    /* 侧边栏顶部标题 */
+    .sidebar-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    /* 侧边栏头像 */
+    .sidebar-avatar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .sidebar-avatar img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      object-fit: cover;
+      transition: transform 0.2s;
+    }
+    .sidebar-avatar img:hover {
+      transform: scale(1.1);
+    }
+
+    /* 侧边栏底部图标 */
+    .sidebar-footer {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .sidebar-footer img {
+      transition: transform 0.2s;
+    }
+    .sidebar-footer img:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
   <div id="app">加载中。。。。</div>
+
+  <!-- Docsify 配置 -->
   <script>
     window.$docsify = {
-      name: '',
-      repo: '',
       onlyCover: false,
-      coverpage: true,
       loadSidebar: true,
+      search: 'auto',
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            const sidebar = document.querySelector('.sidebar');
+
+            // 插入标题
+            if (sidebar && !document.querySelector('.sidebar-title')) {
+              const title = document.createElement('div');
+              title.className = 'sidebar-title';
+              title.innerText = '鲁昊霖个人站';
+              sidebar.prepend(title);
+            }
+
+            // 插入顶部头像
+            if (sidebar && !document.querySelector('.sidebar-avatar')) {
+              const avatar = document.createElement('div');
+              avatar.className = 'sidebar-avatar';
+              avatar.innerHTML = `<img src="cover.png" alt="头像">`;
+              const title = document.querySelector('.sidebar-title');
+              title.after(avatar);
+            }
+
+            // 插入底部社交图标
+            if (sidebar && !document.querySelector('.sidebar-footer')) {
+              const footer = document.createElement('div');
+              footer.className = 'sidebar-footer';
+              footer.innerHTML = `
+                <a href="https://space.bilibili.com/1239005162" target="_blank">
+                  <img src="icon/bilibili-color.svg" alt="Bilibili" width="40">
+                </a>
+                <a href="https://github.com/AVA022hallo" target="_blank">
+                  <img src="icon/github.svg" alt="GitHub" width="40">
+                </a>
+                <a href="https://www.zhihu.com/people/158nbe" target="_blank">
+                  <img src="icon/zhihu.svg" alt="知乎" width="40">
+                </a>
+              `;
+              sidebar.appendChild(footer);
+            }
+          });
+        }
+      ]
     }
   </script>
-  <!-- Docsify v4 -->
+
+  <!-- Docsify 核心脚本 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Docsify 搜索插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!-- docs/_sidebar.md -->
 
 * [首页]()
-* [目录](zh_cn/guide)
+* [IOT](guide/iot_guide)
+<!--* [数学](guide/math_guide.md)-->
